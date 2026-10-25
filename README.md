@@ -85,4 +85,4 @@ This sets the strongest measured response at that frequency to 0 dB and shows ot
 
 ## Software
 
-The analysis tool requires MATLAB with support for `readmatrix`, `polaraxes`, and `uicontrol`. No Python packages are required to run the MATLAB analysis.
+The analysis tool requires MATLAB with support for `readmatrix`, `polaraxes`, and `uicontrol`. 
