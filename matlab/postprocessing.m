@@ -124,15 +124,24 @@ updatePlot();
         s21Normalized = s21 - max(s21(valid));
 
         % Redraw the polar pattern.
+        % Display relative S21 values from -40 dB to 0 dB.
+        % Shift them to non-negative polar radii.
+
         cla(pax);
+
+        s21ForPlot = max(s21Normalized, -40);
+        radius = s21ForPlot + 40;
+        radius(~valid) = NaN;
 
         polarplot( ...
             pax, ...
             deg2rad(currentData.angles), ...
-            s21Normalized, ...
+            radius, ...
             'LineWidth', 2);
 
-        pax.RLim = [-40 0];
+        pax.RLim = [0 40];
+        pax.RTick = 0:10:40;
+        pax.RTickLabel = {'-40 dB', '-30 dB', '-20 dB', '-10 dB', '0 dB'};
         pax.ThetaZeroLocation = 'top';
 
         title(pax, sprintf('%s at %.4f GHz', ...
